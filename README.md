@@ -2,7 +2,7 @@
 
 [![Status: In Development](https://img.shields.io/badge/Status-In%20Development-orange)](https://github.com/daniilseliverstov/SilvPr)
 [![Django](https://img.shields.io/badge/Django-4.2.8-green.svg)](https://www.djangoproject.com/)
-[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 
 **Прототип и планирование.** Этот репозиторий находится на самой ранней стадии разработки. Здесь будет создан персональный сайт-портфолио с интегрированным блогом.
 
@@ -85,7 +85,7 @@
 
 ## 👨‍💻 Разработчик
 
-*   Даниил – [(https://github.com/daniilseliverstov)] (https://github.com/daniilseliverstov) – Тут Появится ссылка после завершения разработки
+*   Даниил – [https://github.com/daniilseliverstov] – (Тут Появится ссылка после завершения разработки)
 ## 📄 Лицензия
 
 Этот проект будет распространяться под лицензией MIT. Подробнее см. в файле `LICENSE` (когда он появится).
