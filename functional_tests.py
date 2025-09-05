@@ -9,12 +9,9 @@ class BaseInstallTest(unittest.TestCase):
     def tearDown(self):  
         self.browser.quit()
 
-    def test_install(self):
-
-        self.browser.get("http://localhost:8000")  
-
-        self.assertIn("Congratulations!", self.browser.title)
-
+    def test_home_page(self):
+        self.browser.get("http://localhost:8000")
+        self.assertIn("SilvPr", self.browser.title)
 
 
 if __name__ == "__main__":  
