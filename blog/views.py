@@ -4,6 +4,6 @@ from django.shortcuts import render
 
 def home_page(request):
     return HttpResponse("""
-                        <html><title> SilvPr </title></html>
-                        <h1> Сайт SilvPr </h1>
+                        <html><title> Блоги </title></html>
+                        <h1> Лента блогов </h1>
                         """)
