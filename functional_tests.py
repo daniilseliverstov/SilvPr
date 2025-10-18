@@ -48,8 +48,8 @@ class HomePageTest(unittest.TestCase):
         """
         Проверяет корректность и содержание ленты блогов:
 
-        1) У статьи есть заготовок
-        2) У статьи есть один абзац текста
+        1) У Блога есть заготовок
+        2) У Блога есть описание
         """
         self.browser.get("http://localhost:8000")
 
@@ -58,7 +58,7 @@ class HomePageTest(unittest.TestCase):
             article_title= self.browser.find_element(By.CLASS_NAME, 'blog-title').text
             self.assertNotEqual(article_title, '')
 
-            article_summary = self.browser.find_element(By.CLASS_NAME, 'article_preview').text
+            article_summary = self.browser.find_element(By.CLASS_NAME, 'description').text
             self.assertNotEqual(article_summary, '')
 
         except Exception as e:

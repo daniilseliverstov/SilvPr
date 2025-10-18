@@ -1,9 +1,9 @@
 from django.http import HttpResponse
+from .models import Blog
 from django.shortcuts import render
 
 
 def home_page(request):
-    return HttpResponse("""
-                        <html><title> Блоги </title></html>
-                        <h1> Лента блогов </h1>
-                        """)
+    blogs = Blog.objects.all()
+    context = {'blogs': blogs}
+    return render(request,'home_page.html', context)

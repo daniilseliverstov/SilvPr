@@ -1,0 +1,18 @@
+
+<html lang="ru">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Блоги </title>
+    <h1> Лента блогов </h1>
+
+      <div class="post-list">
+
+        {% for blog in blogs %}
+          <div class="post">
+            <h2 class="blog-title">{{ blog.title }}</h2>
+            <p class="description">{{ blog.description }}</p>
+          </div>
+        {% endfor %}
+
+      </div>
+</html>
