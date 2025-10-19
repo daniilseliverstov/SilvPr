@@ -50,16 +50,45 @@ class HomePageTest(unittest.TestCase):
 
         1) У Блога есть заготовок
         2) У Блога есть описание
+        3) У блога есть автор
+        4) У блога есть категория
+        5) У блога есть статья
         """
         self.browser.get("http://localhost:8000")
 
+
         try:
+            posts = self.browser.find_elements(By.CLASS_NAME, 'post')
+            self.assertGreater(len(posts), 0, 'На странице нет блогов')
 
-            article_title= self.browser.find_element(By.CLASS_NAME, 'blog-title').text
-            self.assertNotEqual(article_title, '')
+            for post in posts:
 
-            article_summary = self.browser.find_element(By.CLASS_NAME, 'description').text
-            self.assertNotEqual(article_summary, '')
+                blog_title= self.browser.find_element(By.CLASS_NAME, 'blog-title').text
+                self.assertNotEqual(blog_title, '', 'Заголовок блога пустой')
+
+                blog_description = self.browser.find_element(By.CLASS_NAME, 'description').text
+                self.assertNotEqual(blog_description, '', 'Описание блога пустое')
+
+                blog_author = self.browser.find_element(By.CLASS_NAME, 'blog-author').text
+                self.assertNotEqual(blog_author, '', 'Автор блога - пусто')
+
+                blog_category = self.browser.find_element(By.CLASS_NAME, 'category-tag').text
+                self.assertNotEqual(blog_category, '', 'Пустая категория блога')
+
+                articles_container = post.find_element(By.CLASS_NAME, 'articles-container')
+                try:
+                    articles = articles_container.find_elements(By.CLASS_NAME, 'articles')
+                    if len(articles) > 0:
+                        for article in articles:
+                            article_title = article.find_element(By.CLASS_NAME, 'article-title').text
+                            self.assertNotEqual(article_title, '', 'Заголовок статьи пустой')
+                            article_content = article.find_element(By.CLASS_NAME, 'article-content').text
+                            self.assertNotEqual(article_content, '', 'Содержание статьи пустое')
+                    else:
+                        no_articles_message = articles_container.find_element(By.CLASS_NAME, 'no-articles').text
+                        self.assertEqual(no_articles_message, 'Блог без статей')
+                except Exception as ex:
+                    self.fail(f'Ошибка при проверке статейЖ {str(ex)}')
 
         except Exception as e:
             self.fail(f'Ошибка при проверке контента: {str(e)}')

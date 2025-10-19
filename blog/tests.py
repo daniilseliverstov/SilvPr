@@ -2,6 +2,7 @@
 from django.http import HttpRequest
 from django.test import TestCase
 from blog.models import Blog
+from django.contrib.auth.models import User
 
 from datetime import datetime
 
@@ -11,12 +12,18 @@ from blog.views import home_page
 class HomePageTest(TestCase):
     """Класс для тестирования домашней страницы"""
 
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='test-user',
+            password='test-password'
+        )
+
     def test_home_page_returns_correct_html(self):
         """Проверяет херню, мб переделать"""
         response = self.client.get("/")
         self.assertContains(response, "<title> Блоги </title>")
         self.assertContains(response, "<h1> Лента блогов </h1>")
-        self.assertContains(response, "<html>")
+        self.assertContains(response, '<html lang="ru">')
         self.assertContains(response, "</html>")
 
     def test_home_page_display_blog(self):
@@ -50,13 +57,20 @@ class HomePageTest(TestCase):
 
 class BlogModelTest(TestCase):
 
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='test-user',
+            password='test-password'
+        )
+
     def test_blog_save_and_retrieve(self):
         """Проверяет как создается блог"""
         blog1 = Blog(
-            title = "Blog_1",
-            description = "description_1",
-            created_at = datetime.now(),
-            category = "category_1",
+            title="Blog_1",
+            description="description_1",
+            created_at=datetime.now(),
+            category="category_1",
+            author=self.user
         )
         blog2 = Blog(
             title="Blog_2",

@@ -9,6 +9,7 @@
 
         {% for blog in blogs %}
           <div class="post">
+            <span class="category-tag"> {{ blog.category }}</span>
             <h2 class="blog-title">{{ blog.title }}</h2>
             <p class="description">{{ blog.description }}</p>
           </div>
