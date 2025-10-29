@@ -11,7 +11,25 @@
           <div class="post">
             <span class="category-tag"> {{ blog.category }}</span>
             <h2 class="blog-title">{{ blog.title }}</h2>
+            <div class="blog-meta">
+              <span class="blog-author">Автор: {{ blog.author.username }}</span>
+              <span class="blog-date">Создан: {{ blog.created_at|date:"d.m.Y" }}</span>
+            </div>
             <p class="description">{{ blog.description }}</p>
+
+            <div class="articles-container">
+              {% for article in blog.articles.all %}
+                {% if article.status == 'published' %}
+                <div class="article">
+                  <div class="article-title">{{ article.title }}</div>
+                  <div class="article-content">{{ article.content }}</div>
+                </div>
+                {% endif %}
+              {% empty %}
+                <div class="no-articles"> Блог без статей </div>
+              {% endfor %}
+            </div>
+
           </div>
         {% endfor %}
 

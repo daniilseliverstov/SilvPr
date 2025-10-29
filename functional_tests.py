@@ -77,7 +77,7 @@ class HomePageTest(unittest.TestCase):
 
                 articles_container = post.find_element(By.CLASS_NAME, 'articles-container')
                 try:
-                    articles = articles_container.find_elements(By.CLASS_NAME, 'articles')
+                    articles = articles_container.find_elements(By.CLASS_NAME, 'article')
                     if len(articles) > 0:
                         for article in articles:
                             article_title = article.find_element(By.CLASS_NAME, 'article-title').text
