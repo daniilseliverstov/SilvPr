@@ -1,0 +1,264 @@
+/* ===== ОСНОВНЫЕ СТИЛИ ===== */
+
+/* Сброс стандартных отступов и полей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стили для всего тела страницы */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5;  /* Светло-серый фон как в соцсетях */
+    padding: 20px;
+}
+
+/* Основной контейнер по центру страницы */
+.container {
+    max-width: 800px;  /* Уже для ленточного формата */
+    margin: 0 auto;
+}
+
+/* ===== ШАПКА САЙТА ===== */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 25px 0;
+    background: white;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    color: #1877f2;  /* Синий цвет как в Facebook */
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: #65676b;
+}
+
+/* ===== ЛЕНТА БЛОГОВ (КАК В СОЦСЕТЯХ) ===== */
+
+/* Контейнер для всех карточек блогов - одна колонка */
+.blogs-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  /* Расстояние между карточками */
+    margin-bottom: 40px;
+}
+
+/* ===== КАРТОЧКА БЛОГА (СТИЛЬ КАК ПОСТ В СОЦСЕТЯХ) ===== */
+
+.blog-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Эффект при наведении на карточку */
+.blog-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== ЗАГОЛОВОК И МЕТА-ИНФОРМАЦИЯ БЛОГА ===== */
+
+/* Категория блога - тег сверху */
+.category-tag {
+    display: inline-block;
+    background: #1877f2;  /* Синий цвет */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Основной заголовок блога */
+.blog-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c1e21;  /* Темный цвет текста */
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+/* Блок с информацией об авторе и дате */
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e4e6eb;  /* Серая разделительная линия */
+    font-size: 0.9rem;
+}
+
+/* Имя автора */
+.blog-author {
+    font-weight: 600;
+    color: #1877f2;  /* Синий как ссылка */
+}
+
+/* Дата создания блога */
+.blog-date {
+    color: #65676b;  /* Серый цвет */
+}
+
+/* ===== ОПИСАНИЕ БЛОГА ===== */
+
+.description {
+    color: #1c1e21;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+/* ===== КОНТЕЙНЕР ДЛЯ СТАТЕЙ ===== */
+
+.articles-container {
+    background: #f7f8fa;  /* Светло-серый фон для контейнера статей */
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e4e6eb;
+}
+
+/* ===== КАРТОЧКА СТАТЬИ (ВНУТРИ БЛОГА) ===== */
+
+.article {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid #42b883;  /* Зеленая полоска слева */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Заголовок статьи */
+.article-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1c1e21;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Содержание статьи */
+.article-content {
+    color: #444950;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+/* Дата публикации статьи */
+.article-date {
+    font-size: 0.85rem;
+    color: #8a8d91;
+    text-align: right;
+}
+
+/* ===== СООБЩЕНИЕ ЕСЛИ СТАТЕЙ НЕТ ===== */
+
+.no-articles {
+    text-align: center;
+    color: #8a8d91;
+    font-style: italic;
+    padding: 20px;
+    background: #f0f2f5;
+    border-radius: 8px;
+    border: 1px dashed #ccd0d5;
+}
+
+/* ===== СОСТОЯНИЕ КОГДА БЛОГОВ НЕТ ===== */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #8a8d91;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #65676b;
+}
+
+/* ===== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ===== */
+
+/* Планшеты */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .blog-card {
+        padding: 16px;
+    }
+
+    .blog-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Мобильные телефоны */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        background-color: white;  /* На мобильных убираем серый фон */
+    }
+
+    .header {
+        padding: 20px 0;
+        margin-bottom: 20px;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* На мобильных мета-информация в колонку */
+    .blog-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .blogs-feed {
+        gap: 16px;
+    }
+
+    .blog-card {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: none;
+    }
+
+    .blog-card:hover {
+        box-shadow: none;
+        background: #f7f8fa;
+    }
+}
