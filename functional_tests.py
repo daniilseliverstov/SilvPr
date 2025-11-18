@@ -133,6 +133,43 @@ class HomePageTest(unittest.TestCase):
         except Exception as e:
             self.fail(f'Ошибка при проверке структуры страницы: {str(e)}')
 
+    def test_blog_title_is_link_to_blog_page(self):
+        """Проверяет, что заголовок блога это ссылка на страницу блога"""
+        self.browser.get("http://localhost:8000")
+
+        try:
+            blog_cards = self.browser.find_elements(By.CLASS_NAME, 'blog-card')
+
+            if blog_cards:
+                first_blog_card = blog_cards[0]
+                blog_title_link = first_blog_card.find_element(By.CSS_SELECTOR, '.blog-title a')
+                self.assertEqual(blog_title_link.tag_name, 'a', 'Заголовок блога не является ссылкой')
+
+                blog_title_text = blog_title_link.text
+                self.assertNotEqual(blog_title_text,'', 'Заголовок блога пустой')
+
+                blog_url = blog_title_link.get_attribute('href')
+                self.assertIsNotNone(blog_url, 'У ссылки нет url')
+
+                import re
+                match = re.search(r'/blogs/(\d+)/', blog_url)
+                if not match:
+                    self.fail(f'Неверный формат URL: {blog_url}')
+                blog_id = match.group(1)
+
+                blog_title_link.click()
+                WebDriverWait(self.browser, 10).until(
+                    ec.url_matches(f'http://localhost:8000/blogs/{blog_id}/')
+                )
+
+                self.assertEqual(self.browser.current_url, blog_url)
+                blog_page_title = self.browser.find_element(By.TAG_NAME, 'h1').text
+                self.assertEqual(blog_page_title, blog_title_text)
+
+        except Exception as e:
+            self.fail(f'Ошибка при проверке ссылки заголовка блога: {str(e)}')
+
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
