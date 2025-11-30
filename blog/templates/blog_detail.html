@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ blog.title }} - Блог</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ blog.title }}</h1>
+        <p><strong>Автор:</strong> {{ blog.author.username }}</p>
+        <p><strong>Категория:</strong> {{ blog.category }}</p>
+        <p><strong>Создан:</strong> {{ blog.created_at|date:"d.m.Y" }}</p>
+        <p>{{ blog.description }}</p>
+
+        <hr>
+
+        <h2>Опубликованные статьи</h2>
+        {% for article in articles %}
+            <div class="article">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.content }}</p>
+                <small>Опубликовано: {{ article.created_at|date:"d.m.Y" }}</small>
+            </div>
+            <hr>
+        {% empty %}
+            <p>В этом блоге пока нет опубликованных статей</p>
+        {% endfor %}
+
+        <a href="/">Назад к ленте блогов</a>
+    </div>
+</body>
+</html>

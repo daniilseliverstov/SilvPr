@@ -17,7 +17,7 @@
             {% for blog in blogs %}
                 <div class="blog-card">
                     <span class="category-tag">{{ blog.category }}</span>
-                    <h2 class="blog-title">{{ blog.title }}</h2>
+                    <h2 class="blog-title"><a href="/blogs/{{ blog.id }}/">{{ blog.title }}</a></h2>
 
                     <div class="blog-meta">
                         <span class="blog-author">👤 {{ blog.author.username }}</span>
