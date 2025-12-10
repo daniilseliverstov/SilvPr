@@ -1,4 +1,5 @@
 from .base import FunctionalTest
+from selenium.webdriver.common.by import By
 
 
 class HomePageTest(FunctionalTest):
@@ -8,7 +9,8 @@ class HomePageTest(FunctionalTest):
         """Проверяет наличие основных элементов страницы"""
         self.go_to_homepage()
 
-        self.check_text_on_page("It worked!")
-        self.check_text_on_page("Welcome to Django")
+        self.should_see_in_title("The install worked successfully! Congratulations!")
 
+        self.should_see("View release notes for Django 6.0")
+        self.should_see("Tutorial: A Polling App")
 

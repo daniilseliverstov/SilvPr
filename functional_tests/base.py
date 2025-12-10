@@ -27,7 +27,7 @@ class FunctionalTest(LiveServerTestCase):
 
     def go_to_homepage(self):
         """Переходит на главную страницу"""
-        self.browser.get(self.live_server_url)
+        self.browser.get("http://localhost:8000")
 
     def find(self, locator):
         """Ждёт и возвращает элемент.
